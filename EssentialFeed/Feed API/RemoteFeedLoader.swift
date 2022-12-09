@@ -36,7 +36,7 @@ public final class RemoteFeedLoader {
             case .success:
                 completion(.invalidData)
             case .failure:
-                completion(.connectivity)  // MAPPING FROM CLIENT TO DOMAIN ERROR
+                completion(.connectivity)
             }
         }
     }
