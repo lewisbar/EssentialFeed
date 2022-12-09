@@ -41,7 +41,9 @@ public final class RemoteFeedLoader {
             case let .success(data, response):
                 if response.statusCode == 200,
                    let root = try? JSONDecoder().decode(Root.self, from: data) {
-                    completion(.success(root.items))
+
+                    // Mapping from network to domain
+                    completion(.success(root.items.map { $0.item }))
                 } else {
                     completion(.failure(.invalidData))
                 }
@@ -53,5 +55,18 @@ public final class RemoteFeedLoader {
 }
 
 private struct Root: Decodable {
-    let items: [FeedItem]
+    let items: [Item]
+}
+
+// Instead of decoding directly to FeedItem, which would couple FeedItem with this specific API, where it's "image" instead of "imageURL", for example, so you would need coding keys, but different APIs could have different names. So if one changes, they all break. So instead, we have an API specific private Decodable struct Item here that we can conveniently decode the data from the server to, and then map this data to the domain model FeedItem.
+// The RemoteFeedLoader knows the FeedItem, as the diagram in the lecture also shows. But the FeedItem and the HTTPClient(s) all know no one else. So the RemoteFeedLoader seems to be an Adapter between the network/data layer and the domain layer.
+private struct Item: Decodable {
+    let id: UUID
+    let description: String?
+    let location: String?
+    let image: URL
+
+    var item: FeedItem {
+        FeedItem(id: id, description: description, location: location, imageURL: image)
+    }
 }
