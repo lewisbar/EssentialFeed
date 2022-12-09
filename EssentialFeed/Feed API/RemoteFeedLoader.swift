@@ -8,8 +8,8 @@
 import Foundation
 
 public enum HTTPClientResult {
-    case success(HTTPURLResponse)
-    case failure(Error)
+    case success(Data, HTTPURLResponse)
+    case failure(Error)  // CLIENT ERROR
 }
 
 public protocol HTTPClient {
@@ -20,7 +20,7 @@ public final class RemoteFeedLoader {
     private let url: URL
     private let client: HTTPClient
 
-    public enum Error: Swift.Error {
+    public enum Error: Swift.Error {  // DOMAIN ERROR
         case connectivity
         case invalidData
     }
@@ -36,7 +36,7 @@ public final class RemoteFeedLoader {
             case .success:
                 completion(.invalidData)
             case .failure:
-                completion(.connectivity)
+                completion(.connectivity)  // MAPPING FROM CLIENT TO DOMAIN ERROR
             }
         }
     }
