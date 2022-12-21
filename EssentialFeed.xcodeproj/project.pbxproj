@@ -81,8 +81,8 @@
 		303183E5293EFBC00077F0F4 /* EssentialFeed */ = {
 			isa = PBXGroup;
 			children = (
-				30EEA7FC293FE56200AD5A97 /* Feed API */,
 				30318401293EFDC60077F0F4 /* Feed Feature */,
+				30EEA7FC293FE56200AD5A97 /* Feed API */,
 				303183E6293EFBC00077F0F4 /* EssentialFeed.h */,
 			);
 			path = EssentialFeed;
