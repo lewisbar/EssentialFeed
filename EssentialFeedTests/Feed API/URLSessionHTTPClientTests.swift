@@ -83,7 +83,6 @@ final class URLSessionHTTPClientTests: XCTestCase {
 
         let receivedValues = resultValuesFor(data: data, response: response, error: nil)
 
-        let emptyData = Data()
         XCTAssertEqual(receivedValues?.data, data)
         XCTAssertEqual(receivedValues?.response.url, response.url)
         XCTAssertEqual(receivedValues?.response.statusCode, response.statusCode)
