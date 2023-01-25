@@ -5,7 +5,7 @@ name: Swift
 
 on:
   push:
-    branches: [ "main", "feature/image-feed/cache-feed-use-case" ]
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
