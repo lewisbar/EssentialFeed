@@ -132,20 +132,20 @@ final class CodableFeedStoreTests: XCTestCase {
             switch expectedResult {
             case .empty:
                 guard case .empty = retrievedResult else {
-                    XCTFail("Expected .empty, got \(retrievedResult) instead")
+                    XCTFail("Expected .empty, got \(retrievedResult) instead", file: file, line: line)
                     break
                 }
 
             case let .found(expectedFeed, expectedTimestamp):
                 guard case let .found(retrievedFeed, retrievedTimestamp) = retrievedResult else {
-                    XCTFail("Expected \(expectedResult), got \(retrievedResult)")
+                    XCTFail("Expected \(expectedResult), got \(retrievedResult)", file: file, line: line)
                     break
                 }
                 XCTAssertEqual(retrievedFeed, expectedFeed, file: file, line: line)
                 XCTAssertEqual(retrievedTimestamp, expectedTimestamp, file: file, line: line)
 
             default:
-                XCTFail("Expected to retrieve \(expectedResult), got \(retrievedResult) instead")
+                XCTFail("Expected to retrieve \(expectedResult), got \(retrievedResult) instead", file: file, line: line)
             }
 
             exp.fulfill()
