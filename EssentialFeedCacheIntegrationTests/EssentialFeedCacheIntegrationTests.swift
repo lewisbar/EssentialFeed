@@ -65,7 +65,7 @@ final class EssentialFeedCacheIntegrationTests: XCTestCase {
         }
         wait(for: [exp], timeout: 1)
     }
-    
+
     private func expect(_ sut: LocalFeedLoader, toLoad expectedFeed: [FeedImage], file: StaticString = #filePath, line: UInt = #line) {
         let exp = expectation(description: "Wait for load completion")
         sut.load { result in
