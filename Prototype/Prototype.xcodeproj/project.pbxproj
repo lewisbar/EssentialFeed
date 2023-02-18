@@ -12,6 +12,7 @@
 		3053014929A1720700A7679F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3053014729A1720700A7679F /* Main.storyboard */; };
 		3053014B29A1720A00A7679F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3053014A29A1720A00A7679F /* Assets.xcassets */; };
 		3053014E29A1720A00A7679F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3053014C29A1720A00A7679F /* LaunchScreen.storyboard */; };
+		3053015629A180DF00A7679F /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3053015529A180DE00A7679F /* FeedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		3053014A29A1720A00A7679F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3053014D29A1720A00A7679F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3053014F29A1720A00A7679F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3053015529A180DE00A7679F /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				3053014129A1720700A7679F /* AppDelegate.swift */,
 				3053014329A1720700A7679F /* SceneDelegate.swift */,
 				3053014729A1720700A7679F /* Main.storyboard */,
+				3053015529A180DE00A7679F /* FeedViewController.swift */,
 				3053014A29A1720A00A7679F /* Assets.xcassets */,
 				3053014C29A1720A00A7679F /* LaunchScreen.storyboard */,
 				3053014F29A1720A00A7679F /* Info.plist */,
@@ -136,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3053014229A1720700A7679F /* AppDelegate.swift in Sources */,
+				3053015629A180DF00A7679F /* FeedViewController.swift in Sources */,
 				3053014429A1720700A7679F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
