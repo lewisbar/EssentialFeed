@@ -59,6 +59,7 @@
 		30D418FF296736A000883379 /* RemoteFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D418FE296736A000883379 /* RemoteFeedItem.swift */; };
 		30D41901296736ED00883379 /* LocalFeedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D41900296736ED00883379 /* LocalFeedImage.swift */; };
 		30EEA7FE293FE58F00AD5A97 /* RemoteFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EEA7FD293FE58F00AD5A97 /* RemoteFeedLoader.swift */; };
+		30F5C1742A00EBD2000FEDF1 /* FeedUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F5C1732A00EBD2000FEDF1 /* FeedUIComposer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,6 +162,7 @@
 		30D418FE296736A000883379 /* RemoteFeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedItem.swift; sourceTree = "<group>"; };
 		30D41900296736ED00883379 /* LocalFeedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedImage.swift; sourceTree = "<group>"; };
 		30EEA7FD293FE58F00AD5A97 /* RemoteFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoader.swift; sourceTree = "<group>"; };
+		30F5C1732A00EBD2000FEDF1 /* FeedUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUIComposer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -398,6 +400,7 @@
 		30AEC78E29F33E8B007ED91E /* Feed UI */ = {
 			isa = PBXGroup;
 			children = (
+				30F5C1722A00EBC0000FEDF1 /* Composers */,
 				30AEC79229F33EC0007ED91E /* Controllers */,
 				30AEC79329F33ECE007ED91E /* Views */,
 			);
@@ -441,6 +444,14 @@
 				30D418FE296736A000883379 /* RemoteFeedItem.swift */,
 			);
 			path = "Feed API";
+			sourceTree = "<group>";
+		};
+		30F5C1722A00EBC0000FEDF1 /* Composers */ = {
+			isa = PBXGroup;
+			children = (
+				30F5C1732A00EBD2000FEDF1 /* FeedUIComposer.swift */,
+			);
+			path = Composers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -686,6 +697,7 @@
 				30A411EB29D5A2320030595A /* UIView+Shimmering.swift in Sources */,
 				3022D40729B69AF8004F2B37 /* FeedViewController.swift in Sources */,
 				30D2548D29CC4FC80013E1E9 /* FeedImageCell.swift in Sources */,
+				30F5C1742A00EBD2000FEDF1 /* FeedUIComposer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
