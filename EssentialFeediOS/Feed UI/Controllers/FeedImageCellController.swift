@@ -46,6 +46,10 @@ final class FeedImageCellController: FeedImageView {
         cell?.onReuse = { [weak self] in self?.releaseCellForReuse() }
     }
 
+    func setCell(_ cell: FeedImageCell) {
+        self.cell = cell
+    }
+
     private func releaseCellForReuse() {
         cell = nil
     }
