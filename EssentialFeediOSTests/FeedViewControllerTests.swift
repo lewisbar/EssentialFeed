@@ -283,9 +283,9 @@ final class FeedViewControllerTests: XCTestCase {
         sut.loadViewIfNeeded()
         loader.completeFeedLoading(with: [makeImage()])
 
-        let view = sut.simulateFeedImageViewVisible(at: 0)
-        sut.simulateFeedImageViewNotVisible(at: 0)
-        sut.simulateFeedImageViewVisible(at: 0)
+        var view = sut.simulateFeedImageViewVisible(at: 0)
+        view = sut.simulateFeedImageViewNotVisible(at: 0)
+        view = sut.simulateFeedImageViewVisible(at: 0)
 
         let imageData0 = UIImage.make(withColor: .red).pngData()!
         loader.completeImageLoading(with: imageData0)
