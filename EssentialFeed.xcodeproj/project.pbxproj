@@ -18,6 +18,7 @@
 		30143B3C2A55B1C800B265DA /* UIRefreshControl+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30143B3B2A55B1C800B265DA /* UIRefreshControl+TestHelpers.swift */; };
 		30143B3E2A55B22400B265DA /* UIImage+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30143B3D2A55B22400B265DA /* UIImage+TestHelpers.swift */; };
 		30143B3F2A55B48600B265DA /* Feed.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30143B412A55B48600B265DA /* Feed.strings */; };
+		30143B472A55B73E00B265DA /* FeedLocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30143B462A55B73E00B265DA /* FeedLocalizationTests.swift */; };
 		30188BDE2A1031D3001DEE39 /* FeedImagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30188BDD2A1031D3001DEE39 /* FeedImagePresenter.swift */; };
 		3022D40729B69AF8004F2B37 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3022D40629B69AF8004F2B37 /* FeedViewController.swift */; };
 		3022D40829B6A4A7004F2B37 /* EssentialFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 303183E3293EFBC00077F0F4 /* EssentialFeed.framework */; platformFilter = ios; };
@@ -145,6 +146,7 @@
 		30143B402A55B48600B265DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Feed.strings; sourceTree = "<group>"; };
 		30143B422A55B4F600B265DA /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Feed.strings"; sourceTree = "<group>"; };
 		30143B432A55B5C000B265DA /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Feed.strings; sourceTree = "<group>"; };
+		30143B462A55B73E00B265DA /* FeedLocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLocalizationTests.swift; sourceTree = "<group>"; };
 		30188BDD2A1031D3001DEE39 /* FeedImagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImagePresenter.swift; sourceTree = "<group>"; };
 		3022D40629B69AF8004F2B37 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		302A24F229A3D886008CBEFC /* EssentialFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EssentialFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -267,6 +269,23 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		30143B442A55B70A00B265DA /* Feed UI */ = {
+			isa = PBXGroup;
+			children = (
+				30AE47D729B5DDA800F334FB /* FeedUIIntegrationTests.swift */,
+				30143B382A55AAC500B265DA /* Helpers */,
+			);
+			path = "Feed UI";
+			sourceTree = "<group>";
+		};
+		30143B452A55B71C00B265DA /* Feed Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				30143B462A55B73E00B265DA /* FeedLocalizationTests.swift */,
+			);
+			path = "Feed Presentation";
+			sourceTree = "<group>";
+		};
 		30188BDA2A0EE90F001DEE39 /* FeedPresentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,8 +312,8 @@
 		302A24FD29A3D887008CBEFC /* EssentialFeediOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				30AE47D729B5DDA800F334FB /* FeedUIIntegrationTests.swift */,
-				30143B382A55AAC500B265DA /* Helpers */,
+				30143B452A55B71C00B265DA /* Feed Presentation */,
+				30143B442A55B70A00B265DA /* Feed UI */,
 			);
 			path = EssentialFeediOSTests;
 			sourceTree = "<group>";
@@ -788,6 +807,7 @@
 				30AE47D829B5DDA800F334FB /* FeedUIIntegrationTests.swift in Sources */,
 				30143B332A55A93100B265DA /* FeedUIIntegrationTests+Assertions.swift in Sources */,
 				30143B352A55A9CF00B265DA /* FeedViewController+TestHelpers.swift in Sources */,
+				30143B472A55B73E00B265DA /* FeedLocalizationTests.swift in Sources */,
 				30143B3E2A55B22400B265DA /* UIImage+TestHelpers.swift in Sources */,
 				30143B372A55AA6700B265DA /* FeedImageCell+TestHelpers.swift in Sources */,
 				30143B3C2A55B1C800B265DA /* UIRefreshControl+TestHelpers.swift in Sources */,
