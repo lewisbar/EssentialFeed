@@ -1,5 +1,5 @@
 //
-//  FeedImageCell+Helpers.swift
+//  FeedImageCell+TestHelpers.swift
 //  EssentialFeediOSTests
 //
 //  Created by LennartWisbar on 05.07.23.
@@ -35,15 +35,5 @@ extension FeedImageCell {
 
     var renderedImage: Data? {
         feedImageView.image?.pngData()
-    }
-}
-
-private extension UIButton {
-    func simulateTap() {
-        allTargets.forEach { target in
-            actions(forTarget: target, forControlEvent: .touchUpInside)?.forEach {
-                (target as NSObject).perform(Selector($0))
-            }
-        }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  FeedViewController+Helpers.swift
+//  FeedViewController+TestHelpers.swift
 //  EssentialFeediOSTests
 //
 //  Created by LennartWisbar on 05.07.23.
@@ -70,17 +70,5 @@ extension FeedViewController {
 
     private var feedImagesSection: Int {
         0
-    }
-}
-
-private extension UIRefreshControl {
-    func simulatePullToRefresh() {
-        allTargets.forEach { target in
-            let actions = actions(forTarget: target, forControlEvent: .valueChanged)
-
-            actions?.forEach { action in
-                (target as NSObject).perform(Selector(action))
-            }
-        }
     }
 }
