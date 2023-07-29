@@ -8,7 +8,7 @@
 import UIKit
 
 public final class ErrorView: UIView {
-    @IBOutlet private var button: UIButton!
+    @IBOutlet private(set) public var button: UIButton!
 
     public var message: String? {
         get { return isVisible ? button.title(for: .normal) : nil }
@@ -42,7 +42,7 @@ public final class ErrorView: UIView {
         }
     }
 
-    private func hideMessageAnimated() {
+    @IBAction private func hideMessageAnimated() {
         UIView.animate(
             withDuration: 0.25,
             animations: { self.alpha = 0 },
