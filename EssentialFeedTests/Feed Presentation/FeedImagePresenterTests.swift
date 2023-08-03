@@ -7,6 +7,7 @@
 
 import XCTest
 import AppKit
+import EssentialFeed
 
 protocol FeedImageView {
     associatedtype Image: Equatable
@@ -31,6 +32,16 @@ final class FeedImagePresenter<View: FeedImageView, Image> where View.Image == I
     init(view: View) {
         self.view = view
     }
+
+    func didStartLoadingImageData(for model: FeedImage) {
+        view.display(FeedImageViewModel(
+            description: model.description,
+            location: model.location,
+            image: nil,
+            isLoading: true,
+            shouldRetry: false
+        ))
+    }
 }
 
 final class FeedImagePresenterTests: XCTestCase {
@@ -39,6 +50,23 @@ final class FeedImagePresenterTests: XCTestCase {
 
         XCTAssertEqual(view.messages, [])
     }
+
+    func test_didStartLoadingImageData_sendsLoadingViewModel() {
+        let (sut, view) = makeSUT()
+
+        let model = FeedImage(id: UUID(), description: "a description", location: "a location", url: anyURL())
+
+        sut.didStartLoadingImageData(for: model)
+
+        XCTAssertEqual(view.messages, [FeedImageViewModel(
+            description: model.description,
+            location: model.location,
+            image: nil,
+            isLoading: true,
+            shouldRetry: false
+        )])
+    }
+
 
     // MARK: - Helpers
 
