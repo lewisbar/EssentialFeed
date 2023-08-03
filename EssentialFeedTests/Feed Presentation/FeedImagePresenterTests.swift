@@ -33,14 +33,15 @@ final class FeedImagePresenterTests: XCTestCase {
     func test_didFinishLoadingImageData_sendsImageViewModel() {
         let (sut, view) = makeSUT()
         let model = FeedImage(id: UUID(), description: "a description", location: "a location", url: anyURL())
+        let imageData = TestImage.validImageData()
 
-        sut.didFinishLoadingImageData(with: TestImage.validImageData(), for: model)
+        sut.didFinishLoadingImageData(with: imageData, for: model)
 
         XCTAssertEqual(view.messages.count, 1)
         let message = view.messages[0]
         XCTAssertEqual(message.description, model.description)
         XCTAssertEqual(message.location, model.location)
-        XCTAssertNotNil(message.image)
+        XCTAssertEqual(message.image, TestImage(data: imageData))
         XCTAssertEqual(message.isLoading, false)
         XCTAssertEqual(message.shouldRetry, false)
     }
