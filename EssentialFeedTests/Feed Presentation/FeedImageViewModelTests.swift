@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import EssentialFeed
 
 final class FeedImageViewModelTests: XCTestCase {
     func test_hasLocation_returnsFalseIfLocationIsNil() {
