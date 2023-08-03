@@ -5,7 +5,7 @@
 //  Created by LennartWisbar on 03.08.23.
 //
 
-public struct FeedImageViewModel<Image: Equatable>: Equatable {
+public struct FeedImageViewModel<Image> {
     public let description: String?
     public let location: String?
     public let image: Image?

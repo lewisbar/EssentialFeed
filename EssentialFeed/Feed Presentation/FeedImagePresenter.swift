@@ -6,7 +6,7 @@
 //
 
 public protocol FeedImageView {
-    associatedtype Image: Equatable
+    associatedtype Image
     func display(_ model: FeedImageViewModel<Image>)
 }
 
