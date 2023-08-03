@@ -45,9 +45,11 @@ final class FeedImagePresenter<View: FeedImageView, Image> where View.Image == I
         ))
     }
 
+    private struct InvalidImageDataError: Error {}
+
     func didFinishLoadingImageData(with data: Data, for model: FeedImage) {
         guard let image = imageTransformer(data) else {
-            return // didFinishLoadingImageData(with: InvalidImageDataError(), for: model)
+            return didFinishLoadingImageData(with: InvalidImageDataError(), for: model)
         }
 
         view.display(FeedImageViewModel(
@@ -112,6 +114,21 @@ final class FeedImagePresenterTests: XCTestCase {
         let model = FeedImage(id: UUID(), description: "a description", location: "a location", url: anyURL())
 
         sut.didFinishLoadingImageData(with: anyNSError(), for: model)
+
+        XCTAssertEqual(view.messages, [FeedImageViewModel(
+            description: model.description,
+            location: model.location,
+            image: nil,
+            isLoading: false,
+            shouldRetry: true
+        )])
+    }
+
+    func test_didFinishLoadingImageDataWithInvalidData_sendsViewModelWithRetry() {
+        let (sut, view) = makeSUT()
+        let model = FeedImage(id: UUID(), description: "a description", location: "a location", url: anyURL())
+
+        sut.didFinishLoadingImageData(with: Data(), for: model)
 
         XCTAssertEqual(view.messages, [FeedImageViewModel(
             description: model.description,
