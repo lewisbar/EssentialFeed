@@ -21,13 +21,13 @@ final class FeedImagePresenterTests: XCTestCase {
 
         sut.didStartLoadingImageData(for: model)
 
+        let message = view.messages.first
         XCTAssertEqual(view.messages.count, 1)
-        let receivedModel = view.messages[0]
-        XCTAssertEqual(receivedModel.description, model.description)
-        XCTAssertEqual(receivedModel.location, model.location)
-        XCTAssertNil(receivedModel.image)
-        XCTAssertEqual(receivedModel.isLoading, true)
-        XCTAssertEqual(receivedModel.shouldRetry, false)
+        XCTAssertEqual(message?.description, model.description)
+        XCTAssertEqual(message?.location, model.location)
+        XCTAssertNil(message?.image)
+        XCTAssertEqual(message?.isLoading, true)
+        XCTAssertEqual(message?.shouldRetry, false)
     }
 
     func test_didFinishLoadingImageData_sendsImageViewModel() {
@@ -37,13 +37,13 @@ final class FeedImagePresenterTests: XCTestCase {
 
         sut.didFinishLoadingImageData(with: imageData, for: model)
 
+        let message = view.messages.first
         XCTAssertEqual(view.messages.count, 1)
-        let message = view.messages[0]
-        XCTAssertEqual(message.description, model.description)
-        XCTAssertEqual(message.location, model.location)
-        XCTAssertEqual(message.image, TestImage(data: imageData))
-        XCTAssertEqual(message.isLoading, false)
-        XCTAssertEqual(message.shouldRetry, false)
+        XCTAssertEqual(message?.description, model.description)
+        XCTAssertEqual(message?.location, model.location)
+        XCTAssertEqual(message?.image, TestImage(data: imageData))
+        XCTAssertEqual(message?.isLoading, false)
+        XCTAssertEqual(message?.shouldRetry, false)
     }
 
     func test_didFinishLoadingImageDataWithError_sendsViewModelWithRetry() {
@@ -52,13 +52,13 @@ final class FeedImagePresenterTests: XCTestCase {
 
         sut.didFinishLoadingImageData(with: anyNSError(), for: model)
 
+        let message = view.messages.first
         XCTAssertEqual(view.messages.count, 1)
-        let receivedModel = view.messages[0]
-        XCTAssertEqual(receivedModel.description, model.description)
-        XCTAssertEqual(receivedModel.location, model.location)
-        XCTAssertNil(receivedModel.image)
-        XCTAssertEqual(receivedModel.isLoading, false)
-        XCTAssertEqual(receivedModel.shouldRetry, true)
+        XCTAssertEqual(message?.description, model.description)
+        XCTAssertEqual(message?.location, model.location)
+        XCTAssertNil(message?.image)
+        XCTAssertEqual(message?.isLoading, false)
+        XCTAssertEqual(message?.shouldRetry, true)
     }
 
     func test_didFinishLoadingImageDataWithInvalidData_sendsViewModelWithRetry() {
@@ -67,13 +67,13 @@ final class FeedImagePresenterTests: XCTestCase {
 
         sut.didFinishLoadingImageData(with: TestImage.invalidImageData(), for: model)
 
+        let message = view.messages.first
         XCTAssertEqual(view.messages.count, 1)
-        let receivedModel = view.messages[0]
-        XCTAssertEqual(receivedModel.description, model.description)
-        XCTAssertEqual(receivedModel.location, model.location)
-        XCTAssertNil(receivedModel.image)
-        XCTAssertEqual(receivedModel.isLoading, false)
-        XCTAssertEqual(receivedModel.shouldRetry, true)
+        XCTAssertEqual(message?.description, model.description)
+        XCTAssertEqual(message?.location, model.location)
+        XCTAssertNil(message?.image)
+        XCTAssertEqual(message?.isLoading, false)
+        XCTAssertEqual(message?.shouldRetry, true)
     }
 
     // MARK: - Helpers
