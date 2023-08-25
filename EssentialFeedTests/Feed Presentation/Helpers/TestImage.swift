@@ -26,4 +26,4 @@ struct TestImage: Equatable {
     static func invalidImageData() -> Data {
         Data()
     }
-    }
+}
