@@ -144,21 +144,27 @@ final class URLSessionHTTPClientTests: XCTestCase {
     }
 
     private class URLProtocolStub: URLProtocol {
-        private static var stub: Stub?
-        private static var requestObserver: ((URLRequest) -> Void)?
-
         private struct Stub {
             let data: Data?
             let response: URLResponse?
             let error: Error?
+            let requestObserver: ((URLRequest) -> Void)?
         }
 
+        private static var _stub: Stub?
+        private static var stub: Stub? {
+            get { return queue.sync { _stub } }
+            set { queue.sync { _stub = newValue } }
+        }
+
+        private static let queue = DispatchQueue(label: "URLProtocolStub.queue")
+
         static func stub(data: Data?, response: URLResponse?, error: Error?) {
-            stub = Stub(data: data, response: response, error: error)
+            stub = Stub(data: data, response: response, error: error, requestObserver: nil)
         }
 
         static func observeRequests(observer: @escaping (URLRequest) -> Void) {
-            requestObserver = observer
+            stub = Stub(data: nil, response: nil, error: nil, requestObserver: observer)
         }
 
         static func startInterceptingRequests() {
@@ -168,7 +174,6 @@ final class URLSessionHTTPClientTests: XCTestCase {
         static func stopInterceptingRequests() {
             URLProtocol.unregisterClass(URLProtocolStub.self)
             stub = nil
-            requestObserver = nil
         }
 
         override class func canInit(with request: URLRequest) -> Bool {
@@ -180,11 +185,6 @@ final class URLSessionHTTPClientTests: XCTestCase {
         }
 
         override func startLoading() {
-            if let requestObserver = Self.requestObserver {
-                client?.urlProtocolDidFinishLoading(self)
-                return requestObserver(request)
-            }
-
             guard let stub = URLProtocolStub.stub else { return }
 
             if let data = stub.data {
@@ -200,6 +200,8 @@ final class URLSessionHTTPClientTests: XCTestCase {
             } else {
                 client?.urlProtocolDidFinishLoading(self)
             }
+
+            stub.requestObserver?(request)
         }
 
         override func stopLoading() {}
