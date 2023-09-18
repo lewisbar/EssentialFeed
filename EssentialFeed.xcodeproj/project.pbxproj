@@ -1550,7 +1550,7 @@
 				305372D92AB8735400ACEEDC /* FeedStore 2.xcdatamodel */,
 				306FA6F7298BAE44007B220D /* FeedStore.xcdatamodel */,
 			);
-			currentVersion = 306FA6F7298BAE44007B220D /* FeedStore.xcdatamodel */;
+			currentVersion = 305372D92AB8735400ACEEDC /* FeedStore 2.xcdatamodel */;
 			path = FeedStore.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
