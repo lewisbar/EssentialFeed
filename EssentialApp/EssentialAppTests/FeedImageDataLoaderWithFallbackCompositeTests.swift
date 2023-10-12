@@ -1,5 +1,5 @@
 //
-//  FeedImageDataLoaderWithFallbackComposite.swift
+//  FeedImageDataLoaderWithFallbackCompositeTests.swift
 //  EssentialAppTests
 //
 //  Created by LennartWisbar on 12.10.23.
@@ -18,12 +18,12 @@ class FeedImageDataLoaderWithFallbackComposite: FeedImageDataLoader {
     }
 
     func loadImageData(from url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) -> FeedImageDataLoaderTask {
-        primary.loadImageData(from: url) { result in
+        primary.loadImageData(from: url) { [weak self] result in
             switch result {
             case .success:
                 completion(result)
             case .failure:
-                _ = self.fallback.loadImageData(from: url, completion: completion)
+                _ = self?.fallback.loadImageData(from: url, completion: completion)
             }
         }
     }
@@ -33,9 +33,7 @@ final class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
     func test_loadImageData_deliversPrimaryDataOnPrimaryLoaderSuccess() {
         let primaryData = Data(count: 1)
         let fallbackData = Data(count: 2)
-        let primaryLoader = LoaderStub(result: .success(primaryData))
-        let fallbackLoader = LoaderStub(result: .success(fallbackData))
-        let sut = FeedImageDataLoaderWithFallbackComposite(primary: primaryLoader, fallback: fallbackLoader)
+        let sut = makeSUT(primaryResult: .success(primaryData), fallbackResult: .success(fallbackData))
 
         let exp = expectation(description: "Wait for loading to complete")
 
@@ -55,9 +53,7 @@ final class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
 
     func test_loadImageData_deliversFallbackDataOnPrimaryLoaderFailure() {
         let fallbackData = Data(count: 2)
-        let primaryLoader = LoaderStub(result: .failure(anyNSError()))
-        let fallbackLoader = LoaderStub(result: .success(fallbackData))
-        let sut = FeedImageDataLoaderWithFallbackComposite(primary: primaryLoader, fallback: fallbackLoader)
+        let sut = makeSUT(primaryResult: .failure(anyNSError()), fallbackResult: .success(fallbackData))
 
         let exp = expectation(description: "Wait for loading to complete")
 
@@ -74,6 +70,22 @@ final class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
 
         wait(for: [exp], timeout: 1)
     }
+
+    // MARK: - Helpers
+
+    private func makeSUT(primaryResult: FeedImageDataLoader.Result, fallbackResult: FeedImageDataLoader.Result, file: StaticString = #file, line: UInt = #line) -> FeedImageDataLoader {
+        let primaryData = primaryResult
+        let fallbackData = fallbackResult
+        let primaryLoader = LoaderStub(result: primaryResult)
+        let fallbackLoader = LoaderStub(result: fallbackResult)
+        let sut = FeedImageDataLoaderWithFallbackComposite(primary: primaryLoader, fallback: fallbackLoader)
+        trackForMemoryLeaks(primaryLoader, file: file, line: line)
+        trackForMemoryLeaks(fallbackLoader, file: file, line: line)
+        trackForMemoryLeaks(sut, file: file, line: line)
+        return sut
+    }
+
+    
 
     private func anyNSError() -> NSError {
         NSError(domain: "any error", code: 0)
