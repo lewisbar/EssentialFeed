@@ -35,40 +35,14 @@ final class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
         let fallbackData = Data(count: 2)
         let sut = makeSUT(primaryResult: .success(primaryData), fallbackResult: .success(fallbackData))
 
-        let exp = expectation(description: "Wait for loading to complete")
-
-        _ = sut.loadImageData(from: URL(string: "http://any-url.com")!) { result in
-            switch result {
-            case let .success(receivedImageData):
-                XCTAssertEqual(receivedImageData, primaryData)
-            case .failure:
-                XCTFail("Expected success, got \(result) instead")
-            }
-
-            exp.fulfill()
-        }
-
-        wait(for: [exp], timeout: 1)
+        expect(sut, toCompleteWith: .success(primaryData))
     }
 
     func test_loadImageData_deliversFallbackDataOnPrimaryLoaderFailure() {
         let fallbackData = Data(count: 2)
         let sut = makeSUT(primaryResult: .failure(anyNSError()), fallbackResult: .success(fallbackData))
 
-        let exp = expectation(description: "Wait for loading to complete")
-
-        _ = sut.loadImageData(from: URL(string: "http://any-url.com")!) { result in
-            switch result {
-            case let .success(receivedImageData):
-                XCTAssertEqual(receivedImageData, fallbackData)
-            case .failure:
-                XCTFail("Expected success, got \(result) instead")
-            }
-
-            exp.fulfill()
-        }
-
-        wait(for: [exp], timeout: 1)
+        expect(sut, toCompleteWith: .success(fallbackData))
     }
 
     // MARK: - Helpers
@@ -85,7 +59,24 @@ final class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
         return sut
     }
 
-    
+    private func expect(_ sut: FeedImageDataLoader, toCompleteWith expectedResult: FeedImageDataLoader.Result, file: StaticString = #file, line: UInt = #line) {
+        let exp = expectation(description: "Wait for loading to complete")
+
+        _ = sut.loadImageData(from: URL(string: "http://any-url.com")!) { receivedResult in
+            switch (receivedResult, expectedResult) {
+            case let (.success(receivedImageData), .success(expectedImageData)):
+                XCTAssertEqual(receivedImageData, expectedImageData)
+            case (.failure, .failure):
+                break
+            default:
+                XCTFail("Expected \(expectedResult), got \(receivedResult) instead")
+            }
+
+            exp.fulfill()
+        }
+
+        wait(for: [exp], timeout: 1)
+    }
 
     private func anyNSError() -> NSError {
         NSError(domain: "any error", code: 0)
