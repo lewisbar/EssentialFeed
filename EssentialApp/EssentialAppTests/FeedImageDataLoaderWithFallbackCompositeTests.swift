@@ -48,8 +48,6 @@ final class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
     // MARK: - Helpers
 
     private func makeSUT(primaryResult: FeedImageDataLoader.Result, fallbackResult: FeedImageDataLoader.Result, file: StaticString = #file, line: UInt = #line) -> FeedImageDataLoader {
-        let primaryData = primaryResult
-        let fallbackData = fallbackResult
         let primaryLoader = LoaderStub(result: primaryResult)
         let fallbackLoader = LoaderStub(result: fallbackResult)
         let sut = FeedImageDataLoaderWithFallbackComposite(primary: primaryLoader, fallback: fallbackLoader)
