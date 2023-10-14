@@ -17,15 +17,27 @@ class FeedImageDataLoaderWithFallbackComposite: FeedImageDataLoader {
         self.fallback = fallback
     }
 
+    private class TaskWrapper: FeedImageDataLoaderTask{
+        var wrapped: FeedImageDataLoaderTask?
+
+        func cancel() {
+            wrapped?.cancel()
+        }
+    }
+
     func loadImageData(from url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) -> FeedImageDataLoaderTask {
-        primary.loadImageData(from: url) { [weak self] result in
+        let task = TaskWrapper()
+
+        task.wrapped = primary.loadImageData(from: url) { [weak self] result in
             switch result {
             case .success:
                 completion(result)
             case .failure:
-                _ = self?.fallback.loadImageData(from: url, completion: completion)
+                task.wrapped = self?.fallback.loadImageData(from: url, completion: completion)
             }
         }
+
+        return task
     }
 }
 
@@ -78,11 +90,23 @@ final class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
         let url = anyURL()
         let (sut, primaryLoader, fallbackLoader) = makeSUT()
 
-        let primaryTask = sut.loadImageData(from: url) { _ in }
-        primaryTask.cancel()
+        let task = sut.loadImageData(from: url) { _ in }
+        task.cancel()
 
         XCTAssertEqual(primaryLoader.cancelledURLs, [url], "Expected to cancel URL loading in primary loader")
         XCTAssertEqual(fallbackLoader.cancelledURLs, [], "Expected no cancelled URLs in fallback loader")
+    }
+
+    func test_cancelLoadImageData_cancelsFallbackLoaderTaskAfterPrimaryLoaderFailure() {
+        let url = anyURL()
+        let (sut, primaryLoader, fallbackLoader) = makeSUT()
+
+        let task = sut.loadImageData(from: url) { _ in }
+        primaryLoader.complete(with: .failure(anyNSError()))
+        task.cancel()
+
+        XCTAssertEqual(primaryLoader.cancelledURLs, [], "Expected no cancelled URLs in primary loader")
+        XCTAssertEqual(fallbackLoader.cancelledURLs, [url], "Expected to cancel URL loading in fallback loader")
     }
 
     // MARK: - Helpers
