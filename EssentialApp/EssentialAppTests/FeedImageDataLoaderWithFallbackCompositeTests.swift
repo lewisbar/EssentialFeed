@@ -100,49 +100,28 @@ final class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
         let primaryData = anyData()
         let (sut, primaryLoader, _) = makeSUT()
 
-        let _ = sut.loadImageData(from: anyURL()) { receivedResult in
-            switch receivedResult {
-            case let .success(receivedData):
-                XCTAssertEqual(receivedData, primaryData)
-            case .failure:
-                XCTFail("Expected success, got \(receivedResult) instead")
-            }
-        }
-
-        primaryLoader.complete(with: .success(primaryData))
+        expect(sut, toCompleteWith: .success(primaryData), when: {
+            primaryLoader.complete(with: .success(primaryData))
+        })
     }
 
     func test_loadImageData_deliversFallbackDataOnPrimaryLoaderFailureAndFallbackLoaderSuccess() {
         let fallbackData = anyData()
         let (sut, primaryLoader, fallbackLoader) = makeSUT()
 
-        let _ = sut.loadImageData(from: anyURL()) { receivedResult in
-            switch receivedResult {
-            case let .success(receivedData):
-                XCTAssertEqual(receivedData, fallbackData)
-            case .failure:
-                XCTFail("Expected success, got \(receivedResult) instead")
-            }
-        }
-
-        primaryLoader.complete(with: .failure(anyNSError()))
-        fallbackLoader.complete(with: .success(fallbackData))
+        expect(sut, toCompleteWith: .success(fallbackData), when: {
+            primaryLoader.complete(with: .failure(anyNSError()))
+            fallbackLoader.complete(with: .success(fallbackData))
+        })
     }
 
     func test_loadImageData_deliversErrorOnFailureOfBothPrimaryAndFallbackLoader() {
         let (sut, primaryLoader, fallbackLoader) = makeSUT()
 
-        let _ = sut.loadImageData(from: anyURL()) { receivedResult in
-            switch receivedResult {
-            case .success:
-                XCTFail("Expected failure, got \(receivedResult) instead")
-            case .failure:
-                break
-            }
-        }
-
-        primaryLoader.complete(with: .failure(anyNSError()))
-        fallbackLoader.complete(with: .failure(anyNSError()))
+        expect(sut, toCompleteWith: .failure(anyNSError()), when: {
+            primaryLoader.complete(with: .failure(anyNSError()))
+            fallbackLoader.complete(with: .failure(anyNSError()))
+        })
     }
 
     // MARK: - Helpers
@@ -157,24 +136,26 @@ final class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
         return (sut, primaryLoader, fallbackLoader)
     }
 
-//    private func expect(_ sut: FeedImageDataLoader, toCompleteWith expectedResult: FeedImageDataLoader.Result, file: StaticString = #file, line: UInt = #line) {
-//        let exp = expectation(description: "Wait for loading to complete")
-//
-//        _ = sut.loadImageData(from: anyURL()) { receivedResult in
-//            switch (receivedResult, expectedResult) {
-//            case let (.success(receivedImageData), .success(expectedImageData)):
-//                XCTAssertEqual(receivedImageData, expectedImageData)
-//            case (.failure, .failure):
-//                break
-//            default:
-//                XCTFail("Expected \(expectedResult), got \(receivedResult) instead")
-//            }
-//
-//            exp.fulfill()
-//        }
-//
-//        wait(for: [exp], timeout: 1)
-//    }
+    private func expect(_ sut: FeedImageDataLoader, toCompleteWith expectedResult: FeedImageDataLoader.Result, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+        let exp = expectation(description: "Wait for loading to complete")
+
+        let _ = sut.loadImageData(from: anyURL()) { receivedResult in
+            switch (receivedResult, expectedResult) {
+            case let (.success(receivedData), .success(expectedData)):
+                XCTAssertEqual(receivedData, expectedData, file: file, line: line)
+            case (.failure, .failure):
+                break
+            default:
+                XCTFail("Expected \(expectedResult), got \(receivedResult) instead", file: file, line: line)
+            }
+
+            exp.fulfill()
+        }
+
+        action()
+
+        wait(for: [exp], timeout: 1)
+    }
 
     private func anyURL() -> URL {
         URL(string: "http://any-url.com")!
