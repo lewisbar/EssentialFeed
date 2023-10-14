@@ -73,19 +73,6 @@ final class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
         XCTAssertEqual(fallbackLoader.loadedURLs, [url], "Expected to load URL from fallback loader")
     }
 
-    func test_loadImageData_deliversFailureOnFailureOfBothPrimaryAndFallbackLoader() {
-        let url = anyURL()
-        let (sut, primaryLoader, fallbackLoader) = makeSUT()
-
-        let _ = sut.loadImageData(from: url) { _ in }
-
-        primaryLoader.complete(with: .failure(anyNSError()))
-        fallbackLoader.complete(with: .failure(anyNSError()))
-
-        XCTAssertEqual(primaryLoader.loadedURLs, [url], "Expected to load URL from primary loader")
-        XCTAssertEqual(fallbackLoader.loadedURLs, [url], "Expected to load URL from fallback loader")
-    }
-
     func test_cancelLoadImageData_cancelsPrimaryLoaderTask() {
         let url = anyURL()
         let (sut, primaryLoader, fallbackLoader) = makeSUT()
@@ -110,19 +97,52 @@ final class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
     }
 
     func test_loadImageData_deliversPrimaryDataOnPrimaryLoaderSuccess() {
-        let sentData = anyData()
+        let primaryData = anyData()
         let (sut, primaryLoader, _) = makeSUT()
 
         let _ = sut.loadImageData(from: anyURL()) { receivedResult in
             switch receivedResult {
             case let .success(receivedData):
-                XCTAssertEqual(receivedData, sentData)
+                XCTAssertEqual(receivedData, primaryData)
             case .failure:
                 XCTFail("Expected success, got \(receivedResult) instead")
             }
         }
 
-        primaryLoader.complete(with: .success(sentData))
+        primaryLoader.complete(with: .success(primaryData))
+    }
+
+    func test_loadImageData_deliversFallbackDataOnPrimaryLoaderFailureAndFallbackLoaderSuccess() {
+        let fallbackData = anyData()
+        let (sut, primaryLoader, fallbackLoader) = makeSUT()
+
+        let _ = sut.loadImageData(from: anyURL()) { receivedResult in
+            switch receivedResult {
+            case let .success(receivedData):
+                XCTAssertEqual(receivedData, fallbackData)
+            case .failure:
+                XCTFail("Expected success, got \(receivedResult) instead")
+            }
+        }
+
+        primaryLoader.complete(with: .failure(anyNSError()))
+        fallbackLoader.complete(with: .success(fallbackData))
+    }
+
+    func test_loadImageData_deliversErrorOnFailureOfBothPrimaryAndFallbackLoader() {
+        let (sut, primaryLoader, fallbackLoader) = makeSUT()
+
+        let _ = sut.loadImageData(from: anyURL()) { receivedResult in
+            switch receivedResult {
+            case .success:
+                XCTFail("Expected failure, got \(receivedResult) instead")
+            case .failure:
+                break
+            }
+        }
+
+        primaryLoader.complete(with: .failure(anyNSError()))
+        fallbackLoader.complete(with: .failure(anyNSError()))
     }
 
     // MARK: - Helpers
