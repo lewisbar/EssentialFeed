@@ -65,7 +65,7 @@ final class FeedUIIntegrationTests: XCTestCase {
         XCTAssertEqual(sut.isShowingLoadingIndicator, false, "Expected no loading indicator once user initiated reload is completed")
     }
 
-    func test_loadFeedCompletion_rendersSucessfullyLoadedFeed() {
+    func test_loadFeedCompletion_rendersSuccessfullyLoadedFeed() {
         let image0 = makeImage(description: "a description", location: "a location")
         let image1 = makeImage(description: nil, location: "another location")
         let image2 = makeImage(description: "another description", location: nil)
