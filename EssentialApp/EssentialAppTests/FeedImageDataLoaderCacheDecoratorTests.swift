@@ -25,11 +25,8 @@ final class FeedImageDataLoaderCacheDecorator: FeedImageDataLoader {
 
     func loadImageData(from url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) -> FeedImageDataLoaderTask {
         decoratee.loadImageData(from: url) { [weak self] result in
-            switch result {
-            case let .success(data):
+            if case let .success(data) = result {
                 self?.cache.save(data, for: url) { _ in }
-            case .failure:
-                break
             }
             completion(result)
         }
