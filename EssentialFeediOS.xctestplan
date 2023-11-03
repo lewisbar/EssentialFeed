@@ -1,0 +1,38 @@
+{
+  "configurations" : [
+    {
+      "id" : "CFE1D795-39AC-4515-9019-DD79FB0B8DB9",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:EssentialFeed.xcodeproj",
+          "identifier" : "302A24F129A3D886008CBEFC",
+          "name" : "EssentialFeediOS"
+        }
+      ]
+    },
+    "environmentVariableEntries" : [
+      {
+        "key" : "MTC_CRASH_ON_REPORT",
+        "value" : "1"
+      }
+    ]
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:EssentialFeed.xcodeproj",
+        "identifier" : "302A24F829A3D886008CBEFC",
+        "name" : "EssentialFeediOSTests"
+      }
+    }
+  ],
+  "version" : 1
+}

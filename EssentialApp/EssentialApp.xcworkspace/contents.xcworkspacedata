@@ -10,4 +10,22 @@
    <FileRef
       location = "group:../EssentialApp.xctestplan">
    </FileRef>
+   <FileRef
+      location = "group:../CI_iOS.xctestplan">
+   </FileRef>
+   <FileRef
+      location = "group:../CI_macOS.xctestplan">
+   </FileRef>
+   <FileRef
+      location = "group:../EssentialFeed.xctestplan">
+   </FileRef>
+   <FileRef
+      location = "group:../EssentialFeediOS.xctestplan">
+   </FileRef>
+   <FileRef
+      location = "group:../EssentialFeedAPIEndToEndTests.xctestplan">
+   </FileRef>
+   <FileRef
+      location = "group:../EssentialFeedCacheIntegrationTests.xctestplan">
+   </FileRef>
 </Workspace>
