@@ -7,31 +7,7 @@
 
 import XCTest
 import EssentialFeed
-
-protocol FeedImageDataCache {
-    typealias Result = Swift.Result<Void, Error>
-
-    func save(_ data: Data, for url: URL, completion: @escaping (Result) -> Void)
-}
-
-final class FeedImageDataLoaderCacheDecorator: FeedImageDataLoader {
-    private let decoratee: FeedImageDataLoaderSpy
-    private let cache: FeedImageDataCache
-
-    init(decoratee: FeedImageDataLoaderSpy, cache: FeedImageDataCache) {
-        self.decoratee = decoratee
-        self.cache = cache
-    }
-
-    func loadImageData(from url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) -> FeedImageDataLoaderTask {
-        decoratee.loadImageData(from: url) { [weak self] result in
-            if let data = try? result.get() {
-                self?.cache.save(data, for: url) { _ in }
-            }
-            completion(result)
-        }
-    }
-}
+import EssentialApp
 
 final class FeedImageDataLoaderCacheDecoratorTests: XCTestCase, FeedImageDataLoaderTestCase {
     func test_init_doesNotLoadImageData() {
