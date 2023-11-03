@@ -30,8 +30,7 @@ final class FeedImageDataLoaderCacheDecoratorTests: XCTestCase, FeedImageDataLoa
 
     func test_loadImageData_loadsURLFromLoader() {
         let url = anyURL()
-        let loader = FeedImageDataLoaderSpy()
-        let sut = FeedImageDataLoaderCacheDecorator(decoratee: loader)
+        let (sut, loader) = makeSUT()
 
         _ = sut.loadImageData(from: url) { _ in }
 
@@ -40,8 +39,7 @@ final class FeedImageDataLoaderCacheDecoratorTests: XCTestCase, FeedImageDataLoa
 
     func test_cancelLoadImageData_cancelsTask() {
         let url = anyURL()
-        let loader = FeedImageDataLoaderSpy()
-        let sut = FeedImageDataLoaderCacheDecorator(decoratee: loader)
+        let (sut, loader) = makeSUT()
 
         let task = sut.loadImageData(from: url) { _ in }
         task.cancel()
@@ -51,8 +49,7 @@ final class FeedImageDataLoaderCacheDecoratorTests: XCTestCase, FeedImageDataLoa
 
     func test_loadImageData_deliversImageDataOnLoaderSuccess() {
         let data = anyData()
-        let loader = FeedImageDataLoaderSpy()
-        let sut = FeedImageDataLoaderCacheDecorator(decoratee: loader)
+        let (sut, loader) = makeSUT()
 
         expect(sut, toCompleteWith: .success(data), when: {
             loader.complete(with: .success(data))
@@ -61,11 +58,22 @@ final class FeedImageDataLoaderCacheDecoratorTests: XCTestCase, FeedImageDataLoa
 
     func test_loadImageData_deliversErrorOnLoaderFailure() {
         let error = anyNSError()
-        let loader = FeedImageDataLoaderSpy()
-        let sut = FeedImageDataLoaderCacheDecorator(decoratee: loader)
+        let (sut, loader) = makeSUT()
 
         expect(sut, toCompleteWith: .failure(error), when: {
             loader.complete(with: .failure(error))
         })
+    }
+
+    // MARK: - Helpers
+
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: FeedImageDataLoader, decoratee: FeedImageDataLoaderSpy) {
+        let loader = FeedImageDataLoaderSpy()
+        let sut = FeedImageDataLoaderCacheDecorator(decoratee: loader)
+
+        trackForMemoryLeaks(loader)
+        trackForMemoryLeaks(sut)
+
+        return (sut, loader)
     }
 }
