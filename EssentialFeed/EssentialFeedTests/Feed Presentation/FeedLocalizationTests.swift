@@ -48,7 +48,7 @@ final class FeedLocalizationTests: XCTestCase {
         return bundles.reduce([]) { (acc, current) in
             guard
                 let path = current.bundle.path(forResource: table, ofType: "strings"),
-                let strings = NSDictionary(contentsOfFile: path),
+                let strings = try? NSDictionary(contentsOf: URL(fileURLWithPath: path), error: ()),
                 let keys = strings.allKeys as? [String]
             else {
                 XCTFail("Couldn't load localized strings for localization: \(current.localization)", file: file, line: line)
