@@ -20,7 +20,7 @@ final class FeedImageDataLoaderCacheDecorator: FeedImageDataLoader {
     }
 }
 
-final class FeedImageDataLoaderCacheDecoratorTests: XCTestCase {
+final class FeedImageDataLoaderCacheDecoratorTests: XCTestCase, FeedImageDataLoaderTestCase {
     func test_init_doesNotLoadImageData() {
         let loader = FeedImageDataLoaderSpy()
         _ = FeedImageDataLoaderCacheDecorator(decoratee: loader)
@@ -54,20 +54,9 @@ final class FeedImageDataLoaderCacheDecoratorTests: XCTestCase {
         let loader = FeedImageDataLoaderSpy()
         let sut = FeedImageDataLoaderCacheDecorator(decoratee: loader)
 
-        let exp = expectation(description: "Wait for loading to complete")
-        _ = sut.loadImageData(from: anyURL()) { receivedResult in
-            switch receivedResult {
-            case let .success(receivedData):
-                XCTAssertEqual(receivedData, data)
-            case .failure:
-                XCTFail("Expected success, got \(receivedResult) instead")
-            }
-            exp.fulfill()
-        }
-
-        loader.complete(with: .success(data))
-        
-        wait(for: [exp], timeout: 1)
+        expect(sut, toCompleteWith: .success(data), when: {
+            loader.complete(with: .success(data))
+        })
     }
 
     func test_loadImageData_deliversErrorOnLoaderFailure() {
@@ -75,19 +64,8 @@ final class FeedImageDataLoaderCacheDecoratorTests: XCTestCase {
         let loader = FeedImageDataLoaderSpy()
         let sut = FeedImageDataLoaderCacheDecorator(decoratee: loader)
 
-        let exp = expectation(description: "Wait for loading to complete")
-        _ = sut.loadImageData(from: anyURL()) { receivedResult in
-            switch receivedResult {
-            case let .failure(receivedError):
-                XCTAssertEqual(receivedError as NSError, error)
-            case .success:
-                XCTFail("Expected failure, got \(receivedResult) instead")
-            }
-            exp.fulfill()
-        }
-
-        loader.complete(with: .failure(error))
-
-        wait(for: [exp], timeout: 1)
+        expect(sut, toCompleteWith: .failure(error), when: {
+            loader.complete(with: .failure(error))
+        })
     }
 }
