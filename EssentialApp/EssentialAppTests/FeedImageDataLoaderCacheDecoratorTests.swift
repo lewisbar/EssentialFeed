@@ -8,7 +8,7 @@
 import XCTest
 import EssentialFeed
 
-protocol FeedImageCache {
+protocol FeedImageDataCache {
     typealias Result = Swift.Result<Void, Error>
 
     func save(_ data: Data, for url: URL, completion: @escaping (Result) -> Void)
@@ -16,9 +16,9 @@ protocol FeedImageCache {
 
 final class FeedImageDataLoaderCacheDecorator: FeedImageDataLoader {
     private let decoratee: FeedImageDataLoaderSpy
-    private let cache: FeedImageCache
+    private let cache: FeedImageDataCache
 
-    init(decoratee: FeedImageDataLoaderSpy, cache: FeedImageCache) {
+    init(decoratee: FeedImageDataLoaderSpy, cache: FeedImageDataCache) {
         self.decoratee = decoratee
         self.cache = cache
     }
@@ -115,14 +115,14 @@ final class FeedImageDataLoaderCacheDecoratorTests: XCTestCase, FeedImageDataLoa
         return (sut, loader)
     }
 
-    private class CacheSpy: FeedImageCache {
+    private class CacheSpy: FeedImageDataCache {
         private(set) var messages = [Message]()
 
         enum Message: Equatable {
             case save(Data)
         }
 
-        func save(_ data: Data, for url: URL, completion: @escaping (FeedImageCache.Result) -> Void) {
+        func save(_ data: Data, for url: URL, completion: @escaping (FeedImageDataCache.Result) -> Void) {
             messages.append(.save(data))
         }
     }
