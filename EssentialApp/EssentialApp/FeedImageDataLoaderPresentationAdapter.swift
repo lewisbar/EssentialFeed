@@ -5,8 +5,8 @@
 //  Created by LennartWisbar on 06.07.23.
 //
 
-import Foundation
 import EssentialFeed
+import EssentialFeediOS
 
 final class FeedImageDataLoaderPresentationAdapter<View: FeedImageView, Image>: FeedImageCellControllerDelegate where View.Image == Image {
     private let model: FeedImage
