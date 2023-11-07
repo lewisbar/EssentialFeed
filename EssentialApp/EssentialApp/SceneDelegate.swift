@@ -43,7 +43,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let localFeedLoader = LocalFeedLoader(store: store, currentDate: Date.init)
         let localImageLoader = LocalFeedImageDataLoader(store: store)
 
-        let feedViewController = UINavigationController(
+        window?.rootViewController = UINavigationController(
             rootViewController: FeedUIComposer.feedComposedWith(
                 feedLoader: FeedLoaderWithFallbackComposite(
                     primary: FeedLoaderCacheDecorator(decoratee: remoteFeedLoader, cache: localFeedLoader),
@@ -55,24 +55,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 )
             )
         )
-
-        window?.rootViewController = feedViewController
     }
 
     func makeRemoteClient() -> HTTPClient {
         httpClient
     }
 }
-
-#if DEBUG
-private class AlwaysFailingHTTPClient: HTTPClient {
-    private class Task: HTTPClientTask {
-        func cancel() {}
-    }
-
-    func get(from url: URL, completion: @escaping (HTTPClient.Result) -> Void) -> HTTPClientTask {
-        completion(.failure(NSError(domain: "offline", code: 0)))
-        return Task()
-    }
-}
-#endif
