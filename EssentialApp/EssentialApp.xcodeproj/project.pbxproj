@@ -48,6 +48,7 @@
 		30E5BC582AF939C1002526B7 /* FeedViewController+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E5BC4E2AF939C1002526B7 /* FeedViewController+TestHelpers.swift */; };
 		30E5BC592AF939C1002526B7 /* UIRefreshControl+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E5BC4C2AF939C1002526B7 /* UIRefreshControl+TestHelpers.swift */; };
 		30E5BC5B2AF93CCE002526B7 /* FeedUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E5BC5A2AF93CCE002526B7 /* FeedUIIntegrationTests.swift */; };
+		30E614FC2AF94B8500361903 /* FeedAcceptanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E614FB2AF94B8500361903 /* FeedAcceptanceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +127,7 @@
 		30E5BC502AF939C1002526B7 /* FeedUIIntegrationTests+LoaderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedUIIntegrationTests+LoaderSpy.swift"; sourceTree = "<group>"; };
 		30E5BC512AF939C1002526B7 /* FeedUIIntegrationTests+Assertions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedUIIntegrationTests+Assertions.swift"; sourceTree = "<group>"; };
 		30E5BC5A2AF93CCE002526B7 /* FeedUIIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUIIntegrationTests.swift; sourceTree = "<group>"; };
+		30E614FB2AF94B8500361903 /* FeedAcceptanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedAcceptanceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +212,7 @@
 				30E5BC052AF448B4002526B7 /* FeedImageDataLoaderCacheDecoratorTests.swift */,
 				30E5BC202AF933B1002526B7 /* SceneDelegateTests.swift */,
 				30E5BC5A2AF93CCE002526B7 /* FeedUIIntegrationTests.swift */,
+				30E614FB2AF94B8500361903 /* FeedAcceptanceTests.swift */,
 			);
 			path = EssentialAppTests;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 				30E5BC592AF939C1002526B7 /* UIRefreshControl+TestHelpers.swift in Sources */,
 				30E5BC542AF939C1002526B7 /* UIButton+TestHelpers.swift in Sources */,
 				30E5BBFE2AF3F969002526B7 /* FeedLoaderStub.swift in Sources */,
+				30E614FC2AF94B8500361903 /* FeedAcceptanceTests.swift in Sources */,
 				3099D80C2AD6FFDA003B4275 /* FeedLoaderWithFallbackCompositeTests.swift in Sources */,
 				30E5BC562AF939C1002526B7 /* FeedImageCell+TestHelpers.swift in Sources */,
 			);
