@@ -99,9 +99,11 @@ extension FeedViewController {
         ds?.tableView?(tableView, cancelPrefetchingForRowsAt: [index])
     }
 
-    func simulateTapOnErrorMessage() {
-        errorView?.button.simulateTap()
-    }
+//    func simulateTapOnErrorMessage() {
+//        errorView?.gestureRecognizers?.compactMap {
+//            $0 as? UITapGestureRecognizer
+//        }.first?.state = .ended
+//    }
 
     func renderedFeedImageData(at index: Int) -> Data? {
         return simulateFeedImageViewVisible(at: index)?.renderedImage

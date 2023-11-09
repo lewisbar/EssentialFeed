@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "13770E2E-1D6D-463A-96A4-E008A8594BF2"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C7BA7826-949B-4A1D-9B29-50357F557263"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EssentialApp/SceneDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "SceneDelegate"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F1D6E8A8-CCA6-4E39-90D0-50AB3752BDF7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EssentialApp/SceneDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "SceneDelegate"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "28997A64-F091-4115-B30C-AE5CFCE6DC48"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EssentialApp/SceneDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "init(httpClient:store:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D8949F95-A864-47CB-B073-4BFD6A532590"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EssentialApp/FeedLoaderPresentationAdapter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "didRequestFeedRefresh()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E3C56DFF-7F69-4FC5-BC66-13D5794C1816"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EssentialAppTests/FeedAcceptanceTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "response(for:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E3C56DFF-7F69-4FC5-BC66-13D5794C1816 - fc2233c10c6f9d27"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EssentialAppTests.FeedAcceptanceTests.response(for: Foundation.URL) -&gt; (Foundation.Data, __C.NSHTTPURLResponse)"
+                  moduleName = "EssentialAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lennartwisbar/Developer/EssentialFeed/EssentialApp/EssentialAppTests/FeedAcceptanceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "146"
+                  endingLineNumber = "146"
+                  offsetFromSymbolStart = "164">
+               </Location>
+               <Location
+                  uuid = "E3C56DFF-7F69-4FC5-BC66-13D5794C1816 - fc2233c10c6f9d65"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EssentialAppTests.FeedAcceptanceTests.response(for: Foundation.URL) -&gt; (Foundation.Data, __C.NSHTTPURLResponse)"
+                  moduleName = "EssentialAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lennartwisbar/Developer/EssentialFeed/EssentialApp/EssentialAppTests/FeedAcceptanceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "148"
+                  endingLineNumber = "148"
+                  offsetFromSymbolStart = "164">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "33B344A5-06C4-46EA-A619-D298416C90B0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EssentialAppTests/FeedAcceptanceTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "online(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "33B344A5-06C4-46EA-A619-D298416C90B0 - 3e422fe10176dbb4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static EssentialAppTests.FeedAcceptanceTests.HTTPClientStub.online((Foundation.URL) -&gt; (Foundation.Data, __C.NSHTTPURLResponse)) -&gt; EssentialAppTests.FeedAcceptanceTests.HTTPClientStub"
+                  moduleName = "EssentialAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lennartwisbar/Developer/EssentialFeed/EssentialApp/EssentialAppTests/FeedAcceptanceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "68">
+               </Location>
+               <Location
+                  uuid = "33B344A5-06C4-46EA-A619-D298416C90B0 - 165b9c20a3e66cb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Foundation.URL) -&gt; Swift.Result&lt;(Foundation.Data, __C.NSHTTPURLResponse), Swift.Error&gt; in static EssentialAppTests.FeedAcceptanceTests.HTTPClientStub.online((Foundation.URL) -&gt; (Foundation.Data, __C.NSHTTPURLResponse)) -&gt; EssentialAppTests.FeedAcceptanceTests.HTTPClientStub"
+                  moduleName = "EssentialAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lennartwisbar/Developer/EssentialFeed/EssentialApp/EssentialAppTests/FeedAcceptanceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  uuid = "33B344A5-06C4-46EA-A619-D298416C90B0 - 3e422fe10176db76"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static EssentialAppTests.FeedAcceptanceTests.HTTPClientStub.online((Foundation.URL) -&gt; (Foundation.Data, __C.NSHTTPURLResponse)) -&gt; EssentialAppTests.FeedAcceptanceTests.HTTPClientStub"
+                  moduleName = "EssentialAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lennartwisbar/Developer/EssentialFeed/EssentialApp/EssentialAppTests/FeedAcceptanceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "68">
+               </Location>
+               <Location
+                  uuid = "33B344A5-06C4-46EA-A619-D298416C90B0 - 165b9c20a3e6609"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Foundation.URL) -&gt; Swift.Result&lt;(Foundation.Data, __C.NSHTTPURLResponse), Swift.Error&gt; in static EssentialAppTests.FeedAcceptanceTests.HTTPClientStub.online((Foundation.URL) -&gt; (Foundation.Data, __C.NSHTTPURLResponse)) -&gt; EssentialAppTests.FeedAcceptanceTests.HTTPClientStub"
+                  moduleName = "EssentialAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lennartwisbar/Developer/EssentialFeed/EssentialApp/EssentialAppTests/FeedAcceptanceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7AA483C8-0507-44B8-9DE7-01A27E5D21A3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EssentialAppTests/FeedAcceptanceTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "makeData(for:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "47C3FF53-A7D4-4481-B32D-B005A383C806"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EssentialAppTests/Helpers/FeedViewController+TestHelpers.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "simulateTapOnErrorMessage()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "47C3FF53-A7D4-4481-B32D-B005A383C806 - ecafd3166aedbc22"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EssentialFeediOS.FeedViewController.simulateTapOnErrorMessage() -&gt; ()"
+                  moduleName = "EssentialAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lennartwisbar/Developer/EssentialFeed/EssentialApp/EssentialAppTests/Helpers/FeedViewController+TestHelpers.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "103"
+                  endingLineNumber = "103"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  uuid = "47C3FF53-A7D4-4481-B32D-B005A383C806 - 2dddf8616af198dd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIGestureRecognizer) -&gt; Swift.Optional&lt;__C.UITapGestureRecognizer&gt; in EssentialFeediOS.FeedViewController.simulateTapOnErrorMessage() -&gt; ()"
+                  moduleName = "EssentialAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lennartwisbar/Developer/EssentialFeed/EssentialApp/EssentialAppTests/Helpers/FeedViewController+TestHelpers.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "103"
+                  endingLineNumber = "103"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D0993FDF-DEF3-431A-AF48-E459F8352E28"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../EssentialFeed/EssentialFeediOS/Feed UI/Views/ErrorView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "showAnimated(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AF8CD662-F306-4FB4-A0AA-F14D941BE021"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../EssentialFeed/EssentialFeediOS/Feed UI/Controllers/FeedViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "display(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "95A1ECD5-E820-4172-AFDF-24AF84F3D668"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../EssentialFeed/EssentialFeediOS/Feed UI/Views/ErrorView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "setMessageAnimated(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Bup-KU-THs">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,33 +15,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="BoG-Gk-8nj" customClass="ErrorView" customModule="EssentialFeediOS" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jk0-Ke-VBy">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="34"/>
-                                    <color key="backgroundColor" red="1" green="0.43933333330000002" blue="0.41999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28F-6Z-hnP">
+                                    <rect key="frame" x="0.0" y="8" width="393" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <inset key="contentEdgeInsets" minX="0.0" minY="8" maxX="0.0" maxY="8"/>
-                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                    <state key="normal" title="Button">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="hideMessageAnimated" destination="BoG-Gk-8nj" eventType="touchUpInside" id="rSh-8C-C9T"/>
-                                    </connections>
-                                </button>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" red="0.92549020049999997" green="0.45098042490000001" blue="0.4352940917" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <gestureRecognizers/>
                             <constraints>
-                                <constraint firstItem="jk0-Ke-VBy" firstAttribute="leading" secondItem="BoG-Gk-8nj" secondAttribute="leading" id="4gg-9a-8sR"/>
-                                <constraint firstAttribute="trailing" secondItem="jk0-Ke-VBy" secondAttribute="trailing" id="L4c-su-G1P"/>
-                                <constraint firstItem="jk0-Ke-VBy" firstAttribute="top" secondItem="BoG-Gk-8nj" secondAttribute="top" id="POa-Nb-58E"/>
-                                <constraint firstAttribute="bottom" secondItem="jk0-Ke-VBy" secondAttribute="bottom" id="bwA-hF-Mv5"/>
+                                <constraint firstItem="28F-6Z-hnP" firstAttribute="leading" secondItem="BoG-Gk-8nj" secondAttribute="leading" id="0Xr-PW-WKO"/>
+                                <constraint firstAttribute="trailing" secondItem="28F-6Z-hnP" secondAttribute="trailing" id="3Tq-C4-5B1"/>
+                                <constraint firstItem="28F-6Z-hnP" firstAttribute="top" secondItem="BoG-Gk-8nj" secondAttribute="top" constant="8" id="gdg-TD-pgm"/>
+                                <constraint firstAttribute="bottom" secondItem="28F-6Z-hnP" secondAttribute="bottom" constant="8" id="lSi-gx-DFm"/>
                             </constraints>
                             <connections>
-                                <outlet property="button" destination="jk0-Ke-VBy" id="dzY-Ym-NKI"/>
+                                <outlet property="label" destination="28F-6Z-hnP" id="dMa-X7-pAg"/>
+                                <outletCollection property="gestureRecognizers" destination="Ljy-iF-Z4h" appends="YES" id="l0T-h0-Jbo"/>
                             </connections>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="hoh-3j-6FF">
@@ -178,6 +173,11 @@ Location</string>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BwF-n8-Eox" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Ljy-iF-Z4h">
+                    <connections>
+                        <action selector="hideMessageAnimated" destination="BoG-Gk-8nj" id="g3Q-2R-eO5"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1005.3435114503816" y="-52.112676056338032"/>
         </scene>
