@@ -37,9 +37,9 @@ public final class ErrorView: UIView {
     private func showAnimated(_ message: String) {
         label.text = message
 
-//        UIView.animate(withDuration: 0.25) {
+        UIView.animate(withDuration: 0.25) {
             self.alpha = 1
-//        }
+        }
     }
 
     @IBAction private func hideMessageAnimated() {

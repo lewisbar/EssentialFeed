@@ -99,6 +99,9 @@ extension FeedViewController {
         ds?.tableView?(tableView, cancelPrefetchingForRowsAt: [index])
     }
 
+/*
+ This was used when the error view was a button. I replaced it with a label for now, to align with the original project.
+*/
 //    func simulateTapOnErrorMessage() {
 //        errorView?.gestureRecognizers?.compactMap {
 //            $0 as? UITapGestureRecognizer
