@@ -37,6 +37,7 @@
 		30E5BC592AF939C1002526B7 /* UIRefreshControl+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E5BC4C2AF939C1002526B7 /* UIRefreshControl+TestHelpers.swift */; };
 		30E5BC5B2AF93CCE002526B7 /* FeedUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E5BC5A2AF93CCE002526B7 /* FeedUIIntegrationTests.swift */; };
 		30E614FC2AF94B8500361903 /* FeedAcceptanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E614FB2AF94B8500361903 /* FeedAcceptanceTests.swift */; };
+		30E615092B02CB1B00361903 /* CombineHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E615082B02CB1B00361903 /* CombineHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		30E5BC512AF939C1002526B7 /* FeedUIIntegrationTests+Assertions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedUIIntegrationTests+Assertions.swift"; sourceTree = "<group>"; };
 		30E5BC5A2AF93CCE002526B7 /* FeedUIIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUIIntegrationTests.swift; sourceTree = "<group>"; };
 		30E614FB2AF94B8500361903 /* FeedAcceptanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedAcceptanceTests.swift; sourceTree = "<group>"; };
+		30E615082B02CB1B00361903 /* CombineHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 			children = (
 				302B1D522ACDB92B00F01670 /* AppDelegate.swift */,
 				302B1D542ACDB92B00F01670 /* SceneDelegate.swift */,
+				30E615082B02CB1B00361903 /* CombineHelpers.swift */,
 				30E5BC412AF939AA002526B7 /* FeedUIComposer.swift */,
 				30E5BC422AF939AA002526B7 /* WeakRefVirtualProxy.swift */,
 				30E5BC3F2AF939AA002526B7 /* FeedViewAdapter.swift */,
@@ -303,6 +306,7 @@
 				302B1D552ACDB92B00F01670 /* SceneDelegate.swift in Sources */,
 				30E5BC492AF939AA002526B7 /* WeakRefVirtualProxy.swift in Sources */,
 				30E5BC452AF939AA002526B7 /* FeedUIComposer.swift in Sources */,
+				30E615092B02CB1B00361903 /* CombineHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
