@@ -11,9 +11,9 @@ import EssentialFeediOS
 
 final class FeedViewAdapter: FeedView {
     private weak var controller: FeedViewController?
-    private var imageLoader: FeedImageDataLoader
+    private var imageLoader: (URL) -> FeedImageDataLoader.Publisher
 
-    init(controller: FeedViewController? = nil, imageLoader: FeedImageDataLoader) {
+    init(controller: FeedViewController? = nil, imageLoader: @escaping (URL) -> FeedImageDataLoader.Publisher) {
         self.controller = controller
         self.imageLoader = imageLoader
     }
