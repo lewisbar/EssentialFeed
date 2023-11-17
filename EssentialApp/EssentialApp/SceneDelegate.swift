@@ -15,9 +15,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-    private lazy var remoteFeedLoader: RemoteFeedLoader = {
+    private lazy var remoteFeedLoader: RemoteLoader = {
         let remoteURL = URL(string: "https://ile-api.essentialdeveloper.com/essential-feed/v1/feed")!
-        return RemoteFeedLoader(url: remoteURL, client: httpClient)
+        return RemoteLoader(url: remoteURL, client: httpClient, mapper: FeedItemsMapper.map)
     }()
 
     private lazy var httpClient: HTTPClient = {

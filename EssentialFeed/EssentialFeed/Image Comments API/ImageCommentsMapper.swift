@@ -27,7 +27,9 @@ public final class ImageCommentsMapper {
         }
     }
 
-    static var OK_200: Int { 200 }
+    public enum Error: Swift.Error {
+        case invalidData
+    }
 
     // Mapping from network to domain
     public static func map(_ data: Data, from response: HTTPURLResponse) throws -> [ImageComment] {
@@ -36,7 +38,7 @@ public final class ImageCommentsMapper {
         
         guard isOK(response),
               let root = try? decoder.decode(Root.self, from: data) else {
-            throw RemoteImageCommentsLoader.Error.invalidData
+            throw Error.invalidData
         }
 
         return root.comments
