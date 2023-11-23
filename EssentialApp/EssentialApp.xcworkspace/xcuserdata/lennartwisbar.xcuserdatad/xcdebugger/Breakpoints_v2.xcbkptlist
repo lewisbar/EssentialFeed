@@ -222,8 +222,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "103"
             endingLineNumber = "103"
-            landmarkName = "simulateTapOnErrorMessage()"
-            landmarkType = "7">
+            landmarkName = "FeedViewController"
+            landmarkType = "21">
             <Locations>
                <Location
                   uuid = "47C3FF53-A7D4-4481-B32D-B005A383C806 - ecafd3166aedbc22"
