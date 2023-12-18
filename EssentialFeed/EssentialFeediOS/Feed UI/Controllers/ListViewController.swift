@@ -8,7 +8,7 @@
 import UIKit
 import EssentialFeed
 
-public protocol FeedViewControllerDelegate {
+public protocol ListViewControllerDelegate {
     func didRequestFeedRefresh()
 }
 
@@ -18,7 +18,7 @@ public protocol CellController {
     func cancelLoad()
 }
 
-public final class FeedViewController: UITableViewController, ResourceLoadingView, ResourceErrorView {
+public final class ListViewController: UITableViewController, ResourceLoadingView, ResourceErrorView {
     @IBOutlet private(set) public var errorView: ErrorView?
 
     private var loadingControllers = [IndexPath: CellController]()
@@ -29,9 +29,9 @@ public final class FeedViewController: UITableViewController, ResourceLoadingVie
         }
     }
 
-    private var onViewIsAppearing: ((FeedViewController) -> Void)?
+    private var onViewIsAppearing: ((ListViewController) -> Void)?
 
-    public var delegate: FeedViewControllerDelegate?
+    public var delegate: ListViewControllerDelegate?
 
     public override func viewDidLoad() {
         super.viewDidLoad()
