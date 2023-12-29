@@ -111,6 +111,7 @@
 		30E464182B35CFFF00611C33 /* IMAGE_COMMENTS_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 30E464162B35CFFF00611C33 /* IMAGE_COMMENTS_dark.png */; };
 		30E464192B35CFFF00611C33 /* IMAGE_COMMENTS_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 30E464172B35CFFF00611C33 /* IMAGE_COMMENTS_light.png */; };
 		30E4641B2B35D1C000611C33 /* ImageCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4641A2B35D1C000611C33 /* ImageCommentCell.swift */; };
+		30E4641D2B3F76B200611C33 /* CellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4641C2B3F76B200611C33 /* CellController.swift */; };
 		30E5BC022AF44619002526B7 /* FeedCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E5BC012AF44619002526B7 /* FeedCache.swift */; };
 		30E5BC0C2AF51CF1002526B7 /* FeedImageDataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E5BC0B2AF51CF1002526B7 /* FeedImageDataCache.swift */; };
 		30E614FE2AFA99CB00361903 /* FeedSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E614FD2AFA99CB00361903 /* FeedSnapshotTests.swift */; };
@@ -281,6 +282,7 @@
 		30E464162B35CFFF00611C33 /* IMAGE_COMMENTS_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMAGE_COMMENTS_dark.png; sourceTree = "<group>"; };
 		30E464172B35CFFF00611C33 /* IMAGE_COMMENTS_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMAGE_COMMENTS_light.png; sourceTree = "<group>"; };
 		30E4641A2B35D1C000611C33 /* ImageCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCommentCell.swift; sourceTree = "<group>"; };
+		30E4641C2B3F76B200611C33 /* CellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellController.swift; sourceTree = "<group>"; };
 		30E5BC012AF44619002526B7 /* FeedCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCache.swift; sourceTree = "<group>"; };
 		30E5BC0B2AF51CF1002526B7 /* FeedImageDataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataCache.swift; sourceTree = "<group>"; };
 		30E614FD2AFA99CB00361903 /* FeedSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSnapshotTests.swift; sourceTree = "<group>"; };
@@ -690,6 +692,7 @@
 			isa = PBXGroup;
 			children = (
 				3022D40629B69AF8004F2B37 /* ListViewController.swift */,
+				30E4641C2B3F76B200611C33 /* CellController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1138,6 +1141,7 @@
 				30E615032AFC35BC00361903 /* UITableView+HeaderSizing.swift in Sources */,
 				300B992B2A6ECD8900841871 /* ErrorView.swift in Sources */,
 				303787492A75B57000757F7C /* UIRefreshControl+Helpers.swift in Sources */,
+				30E4641D2B3F76B200611C33 /* CellController.swift in Sources */,
 				30855EF92A479960000200F6 /* UITableViewCell+Dequeuing.swift in Sources */,
 				30AEC79729F8FCFD007ED91E /* FeedImageCellController.swift in Sources */,
 				30855EFB2A479D35000200F6 /* UIImageView+Animations.swift in Sources */,
