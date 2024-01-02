@@ -52,21 +52,11 @@ private final class SnapshotWindow: UIWindow {
     }
 
     override var safeAreaInsets: UIEdgeInsets {
-        return configuration.safeAreaInsets
+        configuration.safeAreaInsets
     }
 
     override var traitCollection: UITraitCollection {
-        return super.traitCollection.modifyingTraits { traits in
-            traits.forceTouchCapability = configuration.traitCollection.forceTouchCapability
-            traits.layoutDirection = configuration.traitCollection.layoutDirection
-            traits.preferredContentSizeCategory = configuration.traitCollection.preferredContentSizeCategory
-            traits.userInterfaceIdiom = configuration.traitCollection.userInterfaceIdiom
-            traits.horizontalSizeClass = configuration.traitCollection.horizontalSizeClass
-            traits.verticalSizeClass = configuration.traitCollection.verticalSizeClass
-            traits.displayScale = configuration.traitCollection.displayScale
-            traits.displayGamut = configuration.traitCollection.displayGamut
-            traits.userInterfaceStyle = configuration.traitCollection.userInterfaceStyle
-        }
+        configuration.traitCollection
     }
 
     func snapshot() -> UIImage {
