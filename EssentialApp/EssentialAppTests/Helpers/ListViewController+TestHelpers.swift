@@ -1,5 +1,5 @@
 //
-//  FeedViewController+TestHelpers.swift
+//  ListViewController+TestHelpers.swift
 //  EssentialFeediOSTests
 //
 //  Created by LennartWisbar on 05.07.23.
@@ -9,12 +9,6 @@ import UIKit
 import EssentialFeediOS
 
 extension ListViewController {
-    override public func loadViewIfNeeded() {
-        super.loadViewIfNeeded()
-
-        tableView.frame = CGRect(x: 0, y: 0, width: 1, height: 1)
-    }
-
     func simulateAppearance() {
         if !isViewLoaded {
             loadViewIfNeeded()
@@ -27,15 +21,15 @@ extension ListViewController {
 
     private func prepareForFirstAppearance() {
         setSmallFrameToPreventRenderingCells()
-        replaceRefreshControlWithSpyForiOS17Support()
+        replaceRefreshControlWithFakeForiOS17Support()
     }
 
     private func setSmallFrameToPreventRenderingCells() {
         tableView.frame = CGRect(x: 0, y: 0, width: 390, height: 1)
     }
 
-    private func replaceRefreshControlWithSpyForiOS17Support() {
-        let spyRefreshControl = UIRefreshControlSpy()
+    private func replaceRefreshControlWithFakeForiOS17Support() {
+        let spyRefreshControl = FakeRefreshControl()
 
         refreshControl?.allTargets.forEach { target in
             refreshControl?.actions(forTarget: target, forControlEvent: .valueChanged)?.forEach { action in
@@ -46,7 +40,7 @@ extension ListViewController {
         refreshControl = spyRefreshControl
     }
 
-    private class UIRefreshControlSpy: UIRefreshControl {
+    private class FakeRefreshControl: UIRefreshControl {
         private var _isRefreshing = false
 
         override var isRefreshing: Bool { _isRefreshing }

@@ -30,10 +30,18 @@ public final class ListViewController: UITableViewController, ResourceLoadingVie
         tableView.dataSource = dataSource
         configureErrorView()
         configureTraitCollectionObservers()
+
         onViewIsAppearing = { vc in
             vc.onViewIsAppearing = nil
             vc.refresh()
         }
+    }
+
+
+    public override func viewIsAppearing(_ animated: Bool) {
+        super.viewIsAppearing(animated)
+
+        onViewIsAppearing?(self)
     }
 
     private func configureErrorView() {
@@ -70,12 +78,6 @@ public final class ListViewController: UITableViewController, ResourceLoadingVie
         super.viewDidLayoutSubviews()
 
         tableView.sizeTableHeaderToFit()
-    }
-
-    public override func viewIsAppearing(_ animated: Bool) {
-        super.viewIsAppearing(animated)
-
-        onViewIsAppearing?(self)
     }
 
     @IBAction private func refresh() {
