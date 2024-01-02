@@ -26,6 +26,7 @@ public final class ListViewController: UITableViewController, ResourceLoadingVie
     public override func viewDidLoad() {
         super.viewDidLoad()
 
+        dataSource.defaultRowAnimation = .fade
         tableView.dataSource = dataSource
         configureErrorView()
         onViewIsAppearing = { vc in
