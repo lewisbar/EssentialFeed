@@ -213,54 +213,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "47C3FF53-A7D4-4481-B32D-B005A383C806"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "EssentialAppTests/Helpers/FeedViewController+TestHelpers.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "FeedViewController"
-            landmarkType = "21">
-            <Locations>
-               <Location
-                  uuid = "47C3FF53-A7D4-4481-B32D-B005A383C806 - ecafd3166aedbc22"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "EssentialFeediOS.FeedViewController.simulateTapOnErrorMessage() -&gt; ()"
-                  moduleName = "EssentialAppTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lennartwisbar/Developer/EssentialFeed/EssentialApp/EssentialAppTests/Helpers/FeedViewController+TestHelpers.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "103"
-                  endingLineNumber = "103"
-                  offsetFromSymbolStart = "64">
-               </Location>
-               <Location
-                  uuid = "47C3FF53-A7D4-4481-B32D-B005A383C806 - 2dddf8616af198dd"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.UIGestureRecognizer) -&gt; Swift.Optional&lt;__C.UITapGestureRecognizer&gt; in EssentialFeediOS.FeedViewController.simulateTapOnErrorMessage() -&gt; ()"
-                  moduleName = "EssentialAppTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lennartwisbar/Developer/EssentialFeed/EssentialApp/EssentialAppTests/Helpers/FeedViewController+TestHelpers.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "103"
-                  endingLineNumber = "103"
-                  offsetFromSymbolStart = "40">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "D0993FDF-DEF3-431A-AF48-E459F8352E28"
             shouldBeEnabled = "No"
             ignoreCount = "0"
