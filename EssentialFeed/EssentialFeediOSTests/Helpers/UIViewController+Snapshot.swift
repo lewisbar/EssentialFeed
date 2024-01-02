@@ -19,7 +19,7 @@ struct SnapshotConfiguration {
     let layoutMargins: UIEdgeInsets
     let traitCollection: UITraitCollection
 
-    static func iPhone15Pro(style: UIUserInterfaceStyle) -> SnapshotConfiguration {
+    static func iPhone15Pro(style: UIUserInterfaceStyle, contentSize: UIContentSizeCategory = .medium) -> SnapshotConfiguration {
         return SnapshotConfiguration(
             size: CGSize(width: 393, height: 852),
             safeAreaInsets: UIEdgeInsets(top: 59, left: 0, bottom: 34, right: 0),
@@ -27,7 +27,7 @@ struct SnapshotConfiguration {
             traitCollection: UITraitCollection { traits in
                 traits.forceTouchCapability = .available
                 traits.layoutDirection = .leftToRight
-                traits.preferredContentSizeCategory = .medium
+                traits.preferredContentSizeCategory = contentSize
                 traits.userInterfaceIdiom = .phone
                 traits.horizontalSizeClass = .compact
                 traits.verticalSizeClass = .regular
