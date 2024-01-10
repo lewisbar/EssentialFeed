@@ -62,7 +62,7 @@ final class CommentsUIIntegrationTests: FeedUIIntegrationTests {
         XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once user initiated loading completes with error")
     }
 
-    override func test_viewDidLoad_showsLoadingIndicator() {
+    func test_viewDidLoad_showsLoadingCommentsIndicator() {
         let (sut, loader) = makeSUT()
 
         sut.simulateAppearance()
