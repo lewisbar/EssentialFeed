@@ -35,7 +35,7 @@ final class CommentsUIIntegrationTests: FeedUIIntegrationTests {
         XCTAssertEqual(loader.loadCommentsCallCount, 3, "Expected a third loading request when user initiates load again")
     }
 
-    override func test_loadFeedActions_runsAutomaticallyOnlyOnFirstAppearance() {
+    func test_loadCommentsActions_runsAutomaticallyOnlyOnFirstAppearance() {
         let (sut, loader) = makeSUT()
         XCTAssertEqual(loader.loadCommentsCallCount, 0, "Expected no loading requests before view appears")
 
