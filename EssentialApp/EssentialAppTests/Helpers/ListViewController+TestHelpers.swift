@@ -58,6 +58,60 @@ extension ListViewController {
         refreshControl?.simulatePullToRefresh()
     }
 
+    func simulateErrorViewTap() {
+        errorView.simulateTap()
+    }
+
+    var errorMessage: String? {
+        return errorView.message
+    }
+
+    var isShowingLoadingIndicator: Bool {
+        refreshControl?.isRefreshing == true
+    }
+
+    /*
+     This was used when the error view was a button. I replaced it with a label for now, to align with the original project.
+     */
+    //    func simulateTapOnErrorMessage() {
+    //        errorView?.gestureRecognizers?.compactMap {
+    //            $0 as? UITapGestureRecognizer
+    //        }.first?.state = .ended
+    //    }
+}
+
+extension ListViewController {
+    func numberOfRenderedComments() -> Int {
+        tableView.numberOfSections == 0 ? 0 : tableView.numberOfRows(inSection: commentsSection)
+    }
+
+    func commentMessage(at row: Int) -> String? {
+        commentView(at: row)?.messageLabel.text
+    }
+
+    func commentDate(at row: Int) -> String? {
+        commentView(at: row)?.dateLabel.text
+    }
+
+    func commentUsername(at row: Int) -> String? {
+        commentView(at: row)?.usernameLabel.text
+    }
+
+    func commentView(at row: Int) -> ImageCommentCell? {
+        guard numberOfRenderedComments() > row else {
+            return nil
+        }
+        let dataSource = tableView.dataSource
+        let index = IndexPath(row: row, section: commentsSection)
+        return dataSource?.tableView(tableView, cellForRowAt: index) as? ImageCommentCell
+    }
+
+    private var commentsSection: Int {
+        0
+    }
+}
+
+extension ListViewController {
     @discardableResult
     func simulateFeedImageViewVisible(at index: Int) -> FeedImageCell? {
         feedImageView(at: index) as? FeedImageCell
@@ -99,29 +153,8 @@ extension ListViewController {
         ds?.tableView?(tableView, cancelPrefetchingForRowsAt: [index])
     }
 
-/*
- This was used when the error view was a button. I replaced it with a label for now, to align with the original project.
-*/
-//    func simulateTapOnErrorMessage() {
-//        errorView?.gestureRecognizers?.compactMap {
-//            $0 as? UITapGestureRecognizer
-//        }.first?.state = .ended
-//    }
-
     func renderedFeedImageData(at index: Int) -> Data? {
         return simulateFeedImageViewVisible(at: index)?.renderedImage
-    }
-
-    func simulateErrorViewTap() {
-        errorView.simulateTap()
-    }
-
-    var errorMessage: String? {
-        return errorView.message
-    }
-
-    var isShowingLoadingIndicator: Bool {
-        refreshControl?.isRefreshing == true
     }
 
     func numberOfRenderedFeedImageViews() -> Int {

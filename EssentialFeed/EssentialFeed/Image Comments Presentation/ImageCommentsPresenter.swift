@@ -11,7 +11,7 @@ public struct ImageCommentsViewModel {
     public let comments: [ImageCommentViewModel]
 }
 
-public struct ImageCommentViewModel: Equatable {
+public struct ImageCommentViewModel: Hashable {
     public let message: String
     public let date: String
     public let username: String
@@ -44,7 +44,7 @@ public final class ImageCommentsPresenter {
         return ImageCommentsViewModel(comments: comments.map { comment in
             ImageCommentViewModel(
                 message: comment.message,
-                date: formatter.localizedString(for: comment.createdAt, relativeTo: Date()),
+                date: formatter.localizedString(for: comment.createdAt, relativeTo: currentDate),
                 username: comment.username
             )
         })
