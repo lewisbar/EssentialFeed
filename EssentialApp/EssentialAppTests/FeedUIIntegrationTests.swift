@@ -412,7 +412,7 @@ class FeedUIIntegrationTests: XCTestCase {
         XCTAssertEqual(loader.loadedImageURLs, [image0.url, image0.url, image1.url, image1.url], "Expected two new image URL request after second view becomes visible again")
     }
 
-    func test_feedUICompletion_dispatchesFromBackgroundToMainThread() {
+    func test_loadFeedCompletion_dispatchesFromBackgroundToMainThread() {
         let (sut, loader) = makeSUT()
         sut.simulateAppearance()
 
