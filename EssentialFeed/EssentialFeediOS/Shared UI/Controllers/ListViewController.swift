@@ -103,6 +103,11 @@ public final class ListViewController: UITableViewController, ResourceLoadingVie
         errorView.message = viewModel.message
     }
 
+    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let dl = cellController(forRowAt: indexPath)?.delegate
+        dl?.tableView?(tableView, didSelectRowAt: indexPath)
+    }
+
     public override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let dl = cellController(forRowAt: indexPath)?.delegate
         dl?.tableView?(tableView, willDisplay: cell, forRowAt: indexPath)
