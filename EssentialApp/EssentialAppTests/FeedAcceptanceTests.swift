@@ -54,6 +54,13 @@ final class FeedAcceptanceTests: XCTestCase {
         XCTAssertNotNil(store.feedCache, "Expected to keep non-expired cache")
     }
 
+    func test_onFeedImageSelection_displaysComments() {
+        let comments = showCommentsForFirstImage()
+
+        XCTAssertEqual(comments.numberOfRenderedComments(), 1)
+        XCTAssertEqual(comments.commentMessage(at: 0), makeCommentMessage())
+    }
+
     // MARK: - Helpers
 
     private func launch(
@@ -74,6 +81,16 @@ final class FeedAcceptanceTests: XCTestCase {
     private func enterBackground(with store: InMemoryFeedStore) {
         let sut = SceneDelegate(httpClient: HTTPClientStub.offline, store: store)
         sut.sceneWillResignActive(UIApplication.shared.connectedScenes.first!)
+    }
+
+    private func showCommentsForFirstImage() -> ListViewController {
+        let feed = launch(httpClient: .online(response), store: .empty)
+
+        feed.simulateTapOnFeedImage(at: 0)
+        RunLoop.current.run(until: Date())
+
+        let nav = feed.navigationController
+        return nav?.topViewController as! ListViewController
     }
 
     private class HTTPClientStub: HTTPClient {
@@ -151,12 +168,18 @@ final class FeedAcceptanceTests: XCTestCase {
     }
 
     private func makeData(for url: URL) -> Data {
-        switch url.absoluteString {
-        case "http://image.com":
+        switch url.path {
+        case "/image-1", "/image-2":
             return makeImageData()
 
-        default:
+        case "/essential-feed/v1/feed":
             return makeFeedData()
+
+        case "/essential-feed/v1/image/\(UUID().uuidString)/comments":
+            return makeCommentsData()
+
+        default:
+            return Data()
         }
     }
 
@@ -169,5 +192,22 @@ final class FeedAcceptanceTests: XCTestCase {
             ["id": UUID().uuidString, "image": "http://image.com"],
             ["id": UUID().uuidString, "image": "http://image.com"]
         ]])
+    }
+
+    private func makeCommentsData() -> Data {
+        return try! JSONSerialization.data(withJSONObject: ["items": [
+            [
+                "id": UUID().uuidString,
+                "message": makeCommentMessage(),
+                "created_at": "2024-01-16T17:50:59+0000",
+                "author": [
+                    "username": "a username"
+                ]
+            ]
+        ]])
+    }
+
+    private func makeCommentMessage() -> String {
+        "a message"
     }
 }
