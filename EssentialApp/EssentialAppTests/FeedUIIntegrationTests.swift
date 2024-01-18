@@ -139,6 +139,18 @@ class FeedUIIntegrationTests: XCTestCase {
         assertThat(sut, isRendering: [image0])
     }
 
+    func test_loadFeedCompletion_dispatchesFromBackgroundToMainThread() {
+        let (sut, loader) = makeSUT()
+        sut.simulateAppearance()
+
+        let exp = expectation(description: "Wait for background queue")
+        DispatchQueue.global().async {
+            loader.completeFeedLoading(at: 0)
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1)
+    }
+
     func test_loadFeedCompletion_rendersErrorMessageOnErrorUntilNextReload() {
         let (sut, loader) = makeSUT()
 
@@ -426,18 +438,6 @@ class FeedUIIntegrationTests: XCTestCase {
         sut.simulateFeedImageBecomingVisibleAgain(at: 1)
 
         XCTAssertEqual(loader.loadedImageURLs, [image0.url, image0.url, image1.url, image1.url], "Expected two new image URL request after second view becomes visible again")
-    }
-
-    func test_loadFeedCompletion_dispatchesFromBackgroundToMainThread() {
-        let (sut, loader) = makeSUT()
-        sut.simulateAppearance()
-
-        let exp = expectation(description: "Wait for background queue")
-        DispatchQueue.global().async {
-            loader.completeFeedLoading(at: 0)
-            exp.fulfill()
-        }
-        wait(for: [exp], timeout: 1)
     }
 
     func test_loadImageDataCompletion_dispatchesFromBackgroundToMainThread() {
