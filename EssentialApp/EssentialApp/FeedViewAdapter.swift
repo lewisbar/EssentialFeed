@@ -17,7 +17,7 @@ final class FeedViewAdapter: ResourceView {
     init(
         controller: ListViewController? = nil,
         imageLoader: @escaping (URL) -> FeedImageDataLoader.Publisher,
-        selection: @escaping (FeedImage) -> Void = { _ in }
+        selection: @escaping (FeedImage) -> Void
     ) {
         self.controller = controller
         self.imageLoader = imageLoader
