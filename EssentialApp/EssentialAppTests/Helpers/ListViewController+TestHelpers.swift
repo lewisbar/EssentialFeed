@@ -149,7 +149,7 @@ extension ListViewController {
     }
 
     func simulateFeedImageViewNotNearVisible(at row: Int) {
-        simulateFeedImageViewVisible(at: row)
+        simulateFeedImageViewNearVisible(at: row)
 
         let ds = tableView.prefetchDataSource
         let index = IndexPath(row: row, section: feedImagesSection)
