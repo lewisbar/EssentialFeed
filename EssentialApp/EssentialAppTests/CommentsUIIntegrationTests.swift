@@ -115,6 +115,7 @@ final class CommentsUIIntegrationTests: XCTestCase {
 
         sut.simulateAppearance()
         loader.completeCommentsLoading(with: [comment], at: 0)
+        assertThat(sut, isRendering: [comment])
 
         sut.simulateUserInitiatedReload()
         loader.completeCommentsLoadingWithError(at: 1)
