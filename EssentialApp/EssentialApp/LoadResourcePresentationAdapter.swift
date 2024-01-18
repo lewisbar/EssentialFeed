@@ -1,5 +1,5 @@
 //
-//  FeedLoaderPresentationAdapter.swift
+//  LoadResourcePresentationAdapter.swift
 //  EssentialFeediOS
 //
 //  Created by LennartWisbar on 06.07.23.
@@ -22,7 +22,9 @@ final class LoadResourcePresentationAdapter<Resource, View: ResourceView> {
     func loadResource() {
         presenter?.didStartLoading()
 
-        cancellable = loader().sink(
+        cancellable = loader()
+            .dispatchOnMainQueue()
+            .sink(
             receiveCompletion: { [weak self] completion in
                 switch completion {
                 case .finished: break
@@ -43,6 +45,7 @@ extension LoadResourcePresentationAdapter: FeedImageCellControllerDelegate {
     }
 
     func didCancelImageRequest() {
+        cancellable?.cancel()
         cancellable = nil
     }
 }
