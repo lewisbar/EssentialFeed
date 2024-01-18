@@ -179,26 +179,6 @@ class FeedUIIntegrationTests: XCTestCase {
         XCTAssertEqual(sut.errorMessage, nil)
     }
 
-/*
- Deactivated because the test doesn't work with a label and a gesture recognizer instead of a button.
- The original project doesn't test this either. But I'll leave this here, as the button will return in a bonus lecture.
- This behavior was part of an exercise one had to implement on one's own. My solution used a button.
- I replaced it with a label now to be more aligned with the original project in order to avoid problems
- when following along.
- */
-//    func test_errorView_dismissesErrorMessageOnTap() {
-//        let (sut, loader) = makeSUT()
-//
-//        sut.simulateAppearance()
-//        XCTAssertEqual(sut.errorMessage, nil)
-//
-//        loader.completeFeedLoadingWithError(at: 0)
-//        XCTAssertEqual(sut.errorMessage, localized("GENERIC_CONNECTION_ERROR"))
-//
-//        sut.simulateTapOnErrorMessage()
-//        XCTAssertEqual(sut.errorMessage, nil)
-//    }
-
     // MARK: - Image View Tests
 
     func test_feedImageView_loadsImageURLWhenVisible() {
