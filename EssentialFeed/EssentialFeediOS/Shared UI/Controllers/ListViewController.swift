@@ -8,7 +8,7 @@
 import UIKit
 import EssentialFeed
 
-public final class ListViewController: UITableViewController, ResourceLoadingView, ResourceErrorView {
+public final class ListViewController: UITableViewController, ResourceLoadingView, ResourceErrorView, UITableViewDataSourcePrefetching {
     private(set) public var errorView: ErrorView = ErrorView()
 
     private var loadingControllers = [IndexPath: CellController]()
