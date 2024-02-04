@@ -9,6 +9,19 @@ import Foundation
 import Combine
 import EssentialFeed
 
+extension Paginated {
+    var loadMorePublisher: (() -> AnyPublisher<Self, Error>)? {
+        guard let loadMore else { return nil }
+
+        return {
+            Deferred {
+                Future(loadMore)
+            }
+            .eraseToAnyPublisher()
+        }
+    }
+}
+
 extension HTTPClient {
     typealias Publisher = AnyPublisher<(Data, HTTPURLResponse), Error>
 
