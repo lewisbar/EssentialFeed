@@ -9,7 +9,21 @@ import Foundation
 import Combine
 import EssentialFeed
 
-extension Paginated {
+public extension Paginated {
+    init(items: [Item], loadMorePublisher: (() -> AnyPublisher<Self, Error>)?) {
+        self.init(items: items, loadMore: loadMorePublisher.map { publisher in
+            return { completion in
+                publisher().subscribe(Subscribers.Sink(receiveCompletion: { result in
+                    if case let .failure(error) = result {
+                        completion(.failure(error))
+                    }
+                }, receiveValue: { result in
+                    completion(.success(result))
+                }))
+            }
+        })
+    }
+
     var loadMorePublisher: (() -> AnyPublisher<Self, Error>)? {
         guard let loadMore else { return nil }
 
@@ -22,7 +36,7 @@ extension Paginated {
     }
 }
 
-extension HTTPClient {
+public extension HTTPClient {
     typealias Publisher = AnyPublisher<(Data, HTTPURLResponse), Error>
 
     func getPublisher(url: URL) -> Publisher {
@@ -38,7 +52,7 @@ extension HTTPClient {
     }
 }
 
-extension FeedImageDataLoader {
+public extension FeedImageDataLoader {
     typealias Publisher = AnyPublisher<Data, Error>
 
     func loadImageDataPublisher(from url: URL) -> Publisher {
@@ -54,7 +68,7 @@ extension FeedImageDataLoader {
     }
 }
 
-extension Publisher where Output == Data {
+public extension Publisher where Output == Data {
     func caching(to cache: FeedImageDataCache, using url: URL) -> AnyPublisher<Output, Failure> {
         handleEvents(receiveOutput: { data in
             cache.saveIgnoringResult(data, for: url)
