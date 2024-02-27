@@ -1,5 +1,5 @@
 //
-//  CoreDataFeedStore+FeedImageDataLoader.swift
+//  CoreDataFeedStore+FeedImageDataStore.swift
 //  EssentialFeed
 //
 //  Created by LennartWisbar on 18.09.23.
