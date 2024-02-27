@@ -59,7 +59,6 @@ class CacheFeedImageDataUseCaseTests: XCTestCase {
 
     private func expect(_ sut: LocalFeedImageDataLoader, toCompleteWith expectedResult: LocalFeedImageDataLoader.SaveResult, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
         let exp = expectation(description: "Wait for load completion")
-
         action()
 
         sut.save(anyData(), for: anyURL()) { receivedResult in
