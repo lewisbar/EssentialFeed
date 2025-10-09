@@ -9,7 +9,7 @@ on:
   pull_request:
     branches: [ "main" ]
 
-    timout-minutes: 20
+    timeout-minutes: 20
 
 jobs:
   build-and-test:
